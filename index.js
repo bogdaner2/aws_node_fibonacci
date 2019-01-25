@@ -22,8 +22,12 @@ app.get('/fibonacci', (req, res) => {
 })
 
 app.post('/fibonacci', (req, res) => {
-    fibonacciWithCache(req.body.number, s3, process.env.BUCKET_NAME)
+    if (req.body.number < 0 || req.body.number > 1000) {
+        res.send(JSON.stringify('number must be between 1 and 1000'));
+    } else {
+        fibonacciWithCache(req.body.number, s3, process.env.BUCKET_NAME)
         .then(data => res.send(JSON.stringify(data)));
+    }
 })
 
 app.listen(process.env.PORT, (err) => {

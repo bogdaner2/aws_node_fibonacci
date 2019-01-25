@@ -2,10 +2,7 @@ export const fibonacci = (n) => n > 2 ? (fibonacci(n - 1) + fibonacci(n - 2)) : 
 
 export const fibonacciWithCache = (n, S3, bucket) => {
     return new Promise(resolve => {
-
-    if(n > 10000)
-        resolve('have to be lass than 1000');
-        
+  
     const params = {
         Bucket: bucket,
         Key: 'result.json',
