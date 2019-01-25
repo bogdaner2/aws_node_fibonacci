@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+import { fibonacciWithCache } from "./fibonacci";
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -20,23 +22,8 @@ app.get('/fibonacci', (req, res) => {
 })
 
 app.post('/fibonacci', (req, res) => {
-
-    const resFib = fibonacci(req.body.number);
-
-    const params = {
-        Bucket: process.env.BUCKET_NAME,
-        Key: 'result.json',
-        Body: JSON.stringify({key: req.body.number, res : resFib})
-    }
-
-    s3.upload(params, (err, data) => {
-            if (err) {
-                console.log(err);
-            }
-        }
-    );
-
-    res.send(JSON.stringify(resFib));
+    fibonacciWithCache(req.body.number, s3, process.env.BUCKET_NAME)
+        .then(data => res.send(JSON.stringify(data)));
 })
 
 app.listen(process.env.PORT, (err) => {
@@ -46,4 +33,3 @@ app.listen(process.env.PORT, (err) => {
     console.log(`server is listening on ${process.env.PORT}`)
 })
 
-const fibonacci = (n) => n > 2 ? (fibonacci(n - 1) + fibonacci(n - 2)) : 1;

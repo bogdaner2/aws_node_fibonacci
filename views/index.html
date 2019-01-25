@@ -7,11 +7,15 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
 <body>
-<div style="display:flex; align-items: center;flex-direction: column">
+<div style="display:flex; 
+            align-items: center;
+            flex-direction: column;
+            height: calc(100vh - 100px);
+            justify-content: center">
     <h3>Fibonacci number</h3>
     <br />
     <div>
-        <input id="number" type="number" value="">
+        <input id="number" min="1" max="1000" type="number" value="">
         <button id="submit" type="button">Ok</button>
         <h5 id="res"></h5>
     </div>
