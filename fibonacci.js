@@ -19,9 +19,9 @@ export const fibonacciWithCache = (n, S3, bucket) => {
             } else {
                 const {res, cachedItem} = fibonacciWithCachedResult(n);
 
-                S3.upload(Object.assing(params, {Body: JSON.stringify(cachedItem)}), (err, data) => {});
+                S3.upload(Object.assign(params, {Body: JSON.stringify(cachedItem)}), (err, data) => {});
                 
-                resolve(JSON.stringify(res));
+                resolve(res);
             }
     });
 
