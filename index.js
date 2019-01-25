@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/fibonacci', (req, res) => {
-    res.sendFile(path.join(__dirname+'/Views/index.html'));
+    res.sendFile(path.join(__dirname+'/views/index.html'));
 })
 
 app.post('/fibonacci', (req, res) => {
