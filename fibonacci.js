@@ -38,7 +38,7 @@ export const fibonacciWithCache = (n, S3, bucket) => {
 const fibonacciWithCachedResult = (n) => {
     let arr = [0, 1];
     let cachedItem = {'1': 1}
-    for (let i = 2; i < Number(n) + 1; i++){
+    for (let i = 2; i < Number(n) + 1; i++) {
         let num = arr[i - 2] + arr[i - 1];
         cachedItem = Object.assign(cachedItem, {[i]: num});
         arr.push(num);
