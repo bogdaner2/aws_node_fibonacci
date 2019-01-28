@@ -24,13 +24,15 @@
         $('#submit').click(function() {
             var number = $('#number').val();
             if (number > 1 && number <= 1000) {
+                $('#submit').prop('disabled', true);
                 $.ajax({
                     contentType: 'application/json',
                     url: '/fibonacci',
                     method: 'POST',
                     data: JSON.stringify({ number }),
                     success: function(data) {
-                        $('#res').text("Result : " + data)
+                        $('#res').text("Result : " + data);
+                        $('#submit').prop('disabled', false);
                     }
                 });
             } else {
