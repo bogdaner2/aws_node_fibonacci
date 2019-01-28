@@ -1,4 +1,4 @@
-# aws_fibonacci_deploy
+# aws_node_fibonacci
 Node application for calculating Fibonacci number and cache the result.
 
 ## Steps:
